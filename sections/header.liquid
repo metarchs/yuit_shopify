@@ -88,10 +88,7 @@ the underlying logic of the menu. Modified by Samiii.
 }
 {%- endif -%}
 </style><height-observer variable="header">
-<store-header
-  class="header"
-  {% if section.settings.hide_on_scroll %}hide-on-scroll="100"{% endif %}
-  {% if section.settings.enable_sticky %}sticky{% endif %}>
+<store-header class="header" {% if section.settings.hide_on_scroll %}hide-on-scroll="100"{% endif %}{% if section.settings.enable_sticky %}sticky{% endif %}>
   <div class="header__wrapper">
     {%- comment -%}
     --------------------------------------------------------------------------------------------------------------------
@@ -356,7 +353,7 @@ the underlying logic of the menu. Modified by Samiii.
     {%- render 'icon' with 'close', width: 19, height: 19 -%}
   </button>
 
-  {%- render 'navigation-panel'
+  {%- render 'navigation-panel' 
     , is_mega_menu: false,
     main_menu: main_menu,
     secondary_menu: secondary_menu,
@@ -371,7 +368,7 @@ the underlying logic of the menu. Modified by Samiii.
 (() => {
   document.documentElement.style.setProperty(`--header-height`, `${
     document
-      .getElementById('shopify-section- {{ section.id }}')
+      .getElementById('shopify-section-  {{ section.id }}')
       .getBoundingClientRect()
       .height
       .toFixed(1)
